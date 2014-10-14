@@ -33,7 +33,7 @@
 .item {
   @include transition(all 0.3s);
   background: $color-scale-1;
-  border-left: 4px solid darken($color-scale-1, 10);
+  border: 4px solid darken($color-scale-1, 10);
   border-radius: 2px;
   margin: 0 0 20px;
   padding: 20px;
