@@ -1,0 +1,23 @@
+{{outlet}}
+
+<ul class="items-list">
+  {{#each itemController="item"}}
+  <li>
+    <div {{bind-attr class=":item expirationScale"}}>
+      <strong class="item-name">{{name}}</strong>
+
+      <span class="item-expiration" {{bind-attr title=expiration}}>
+        {{#if expired}}
+        expired!
+        {{else}}
+        expires {{expirationFromNow}}
+        {{/if}}
+      </span>
+
+      <a class="delete-item-link" href="#" {{action 'deleteItem'}}>Delete</a>
+    </div>
+  </li>
+  {{else}}
+  <li>None yet. {{#link-to 'items.new'}}Add one now!{{/link-to}}</li>
+  {{/each}}
+</ul>

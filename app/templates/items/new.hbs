@@ -1,0 +1,13 @@
+<h3>New Item:</h3>
+
+<label>
+  Name:
+  {{input value=name}}
+</label>
+
+<label>
+  Expiration Date:
+  {{input type="date" value=expiration}}
+</label>
+
+<button class="button" {{action 'addItem'}} {{bind-attr disabled=isInvalid}}>Save Item</button>

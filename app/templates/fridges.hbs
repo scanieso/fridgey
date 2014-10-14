@@ -1,0 +1,18 @@
+<header class="global-header">
+  <h1>{{#link-to 'fridges'}}Fridgey{{/link-to}}</h1>
+</header> <!-- /.global-header -->
+
+{{#link-to 'fridges.new' classNames="button"}}+ Add New Fridge{{/link-to}}
+<br>
+
+<ul>
+  {{#each itemController="fridge"}}
+  <li>
+    {{#link-to 'fridge' this}}{{name}} ({{items.length}}){{/link-to}}
+
+    <a href="#" {{action 'deleteFridge'}}>Delete</a>
+  </li>
+  {{/each}}
+</ul>
+
+{{outlet}}

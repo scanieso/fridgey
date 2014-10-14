@@ -6,6 +6,7 @@ module.exports = function(environment) {
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -16,6 +17,14 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      NOUNPROJECTSECRET: '05aa4e7f39ad4daf8e3bb19119ce951f'
+    },
+
+    contentSecurityPolicy: {
+      'connect-src': "'self' wss://s-dal5-nss-21.firebaseio.com",
+      'font-src': "'self' http://fonts.gstatic.com",
+      'script-src': "'self' 'unsafe-eval' http://crypto-js.googlecode.com",
+      'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com"
     }
   };
 

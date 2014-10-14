@@ -1,0 +1,44 @@
+.input-text,
+input,fdsaf
+textarea {
+  @include box-sizing(border-box);
+  @include transition(all 0.2s);
+  background: $color-neutral-dark;
+  border: 1px solid $color-neutral-dark;
+  border-top: 2px solid $color-neutral-darker;
+  border-radius: 2px;
+  color: inherit;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 3px 10px;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  // width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+
+  &[disabled] {
+    color: $gray;
+    opacity: 0.5;
+  }
+}
+
+@include placeholder {
+}
+
+::-webkit-outer-spin-button,
+::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+textarea {
+  overflow: auto;
+  max-width: 100%;
+  resize: vertical;
+  vertical-align: top;
+}

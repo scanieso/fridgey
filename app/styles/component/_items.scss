@@ -1,0 +1,72 @@
+.items-list {
+  @include list-clean;
+  margin-left: (-$spacing-horizontal + 4);
+
+  > li {
+    @include inline-block;
+    @include transition(width 0.4s);
+    margin-left: em(-4);
+    padding-left: $spacing-horizontal;
+    vertical-align: top;
+    width: 25%;
+  }
+
+  @media all and (min-width: em(1080)) {
+    > li {
+      width: 20%;
+    }
+  }
+
+  @media all and (max-width: em(780)) {
+    > li {
+      width: (100%/3);
+    }
+  }
+
+  @media all and (max-width: em(660)) {
+    > li {
+      width: 50%;
+    }
+  }
+}
+
+.item {
+  @include transition(all 0.3s);
+  background: $color-scale-1;
+  border-left: 4px solid darken($color-scale-1, 10);
+  border-radius: 2px;
+  margin: 0 0 20px;
+  padding: 20px;
+  position: relative;
+  text-align: center;
+
+  &.expired {
+    background: $color-neutral-dark;
+    border-color: darken($color-neutral-dark, 10);
+  }
+
+  &.expires-today {
+    background: $color-scale-4;
+    border-color: darken($color-scale-4, 10);
+  }
+
+  &.expires-soon {
+    background: $color-scale-3;
+    border-color: darken($color-scale-3, 10);
+  }
+
+  &.expires-this-week {
+    background: $color-scale-2;
+    border-color: darken($color-scale-2, 10);
+  }
+}
+
+.item-name {
+  @include font-size(20);
+  @include text-ellipsis;
+  display: block;
+}
+
+.item-expiration {
+  display: block;
+}

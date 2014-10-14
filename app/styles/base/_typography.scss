@@ -1,0 +1,43 @@
+// Typography
+// ---------------------------------------
+
+h1 {
+  @include font-size(60);
+  font-family: $font-heading;
+  font-weight: bold;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+  }
+}
+
+h2 {
+  // @include font-size(24);
+}
+
+h3 {
+  // @include font-size(20);
+}
+
+h4 {
+  // @include font-size(18);
+}
+
+h5 {
+  // @include font-size(17);
+}
+
+h6 {
+  // @include font-size(16);
+}
+
+a {
+  @include transition(all 0.2s);
+  color: inherit;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}

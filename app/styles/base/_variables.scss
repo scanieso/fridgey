@@ -1,0 +1,43 @@
+// Colors
+// ---------------------------------------
+
+// gray, pea, plum
+$color-neutral: #EBE3AA;
+$color-scale-1: darken(#CAD7B2, 5);
+$color-scale-2: #A8CABA;
+$color-scale-3: #838689;
+$color-scale-4: #5D4157;
+
+// plum, orange, magenta
+$color-neutral: #331327;
+$color-neutral-lighter: lighten($color-neutral, 15);
+$color-neutral-light: lighten($color-neutral, 8);
+$color-neutral-dark: darken($color-neutral, 5);
+$color-neutral-darker: darken($color-neutral, 10);
+$color-scale-1: #991766;
+$color-scale-2: #D90F5A;
+$color-scale-3: #F34739;
+$color-scale-4: #FF6E27;
+
+$gray: #424254;
+
+$color-body: #fff;
+$color-primary: $color-scale-1;
+$color-primary-dark: darken($color-primary, 10);
+
+
+// Fonts
+// ---------------------------------------
+
+$font-primary: "Lato", "Helvetica Neue", "Arial", sans-serif;
+$font-heading: "Alegreya Sans", sans-serif;
+$font-mono: monospace, serif;
+
+
+// Misc
+// ---------------------------------------
+
+$spacing-horizontal: 20px;
+$spacing-vertical: 20px;
+
+$page-width: 960px;

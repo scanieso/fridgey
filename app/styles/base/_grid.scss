@@ -1,0 +1,28 @@
+// Grid
+// ---------------------------------------
+$grid-num-columns: 12 !default;
+$grid-spacing: 20px !default;
+
+$grid-classes: ();
+@for $i from 1 through ($grid-num-columns - 1) {
+  $grid-classes: join($grid-classes, unquote(".span#{$i}"), comma);
+  .span#{$i} {
+    width: 100%/$grid-num-columns * $i;
+  }
+
+  .offset#{$i} {
+    margin-left: 100%/$grid-num-columns * $i;
+  }
+}
+
+.row {
+  @include vertical-rhythm;
+  @include clearfix;
+  margin-left: -$grid-spacing;
+
+  #{$grid-classes} {
+    @include box-sizing(border-box);
+    float: left;
+    padding-left: $grid-spacing;
+  }
+}
