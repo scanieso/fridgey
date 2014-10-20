@@ -4,46 +4,29 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   name: DS.attr('string'),
+  expiration: DS.attr('string', {
+    defaultValue: function () {
+      return moment().format('YYYY-MM-DD');
+    }
+  }),
+  fridge: DS.belongsTo('fridge', { async: true }),
+
   slug: function () {
     return this.get('name').dasherize();
   }.property('name'),
 
-  expiration: DS.attr('string'),
-
-  expirationFromNow: function () {
-    return moment(this.get('expiration')).endOf('day').fromNow();
+  expMoment: function () {
+    return moment(this.get('expiration'));
   }.property('expiration'),
 
-  expirationDiff: function () {
-    var now = moment(),
-    exp = moment(this.get('expiration')),
-    diff = exp.diff(now, 'days');
+  expDiff: function () {
+    var now = moment().endOf('day'),
+    exp = this.get('expMoment').endOf('day');
 
-    return diff;
-  }.property('expiration'),
+    return exp.diff(now, 'days');
+  }.property('expMoment'),
 
-  expirationScale: function () {
-    var diff = this.get('expirationDiff'),
-    scale;
-
-    if (diff < 0) {
-      scale = 'expired';
-    } else if (diff < 1) {
-      scale = 'expires-today';
-    } else if (diff < 3) {
-      scale = 'expires-soon';
-    } else if (diff < 7) {
-      scale = 'expires-this-week';
-    } else {
-      scale = '';
-    }
-
-    return scale;
-  }.property('expirationDiff'),
-
-  expired: function () {
-    return this.get('expirationDiff') < 0;
-  }.property('expirationDiff'),
-
-  fridge: DS.belongsTo('fridge')
+  isExpired: function () {
+    return this.get('expDiff') < 0;
+  }.property('expDiff')
 });

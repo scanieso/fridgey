@@ -1,14 +1,13 @@
 <header class="global-header">
   <h1>{{#link-to 'fridges'}}Fridgey{{/link-to}}</h1>
+  {{#link-to 'fridges.new' classNames="button"}}+ Add New Fridge{{/link-to}}
 </header> <!-- /.global-header -->
-
-{{#link-to 'fridges.new' classNames="button"}}+ Add New Fridge{{/link-to}}
-<br>
 
 <ul>
   {{#each itemController="fridge"}}
   <li>
-    {{#link-to 'fridge' this}}{{name}} ({{items.length}}){{/link-to}}
+    {{#link-to 'fridge' this}}{{name}}{{/link-to}}
+    {{expiring.length}} out of {{items.length}} expiring
 
     <a href="#" {{action 'deleteFridge'}}>Delete</a>
   </li>

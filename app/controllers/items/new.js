@@ -1,3 +1,5 @@
+/* global moment */
+
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
@@ -10,10 +12,6 @@ export default Ember.ObjectController.extend({
       expiration = this.get('expiration'),
       item;
 
-      if (typeof name === 'undefined') {
-        return false;
-      }
-
       item = this.store.createRecord('item', {
         name: name,
         expiration: expiration,
@@ -22,7 +20,7 @@ export default Ember.ObjectController.extend({
 
       item.save().then(function () {
         self.set('name', '');
-        self.set('expiration', '');
+        self.set('expiration', moment().format('YYYY-MM-DD'));
 
         fridge.get('items').then(function (items) {
           items.pushObject(item);

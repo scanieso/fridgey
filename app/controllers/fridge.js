@@ -7,5 +7,9 @@ export default Ember.ObjectController.extend({
         fridge.destroyRecord();
       });
     }
-  }
+  },
+
+  expiring: function () {
+    return this.get('items').filterBy('isExpired');
+  }.property('items.@each.isExpired')
 });

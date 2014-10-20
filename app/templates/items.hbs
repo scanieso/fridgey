@@ -3,14 +3,14 @@
 <ul class="items-list">
   {{#each itemController="item"}}
   <li>
-    <div {{bind-attr class=":item expirationScale"}}>
+    <div {{bind-attr class=":item expScale" title=prettyExp}}>
       <strong class="item-name">{{name}}</strong>
 
-      <span class="item-expiration" {{bind-attr title=expiration}}>
-        {{#if expired}}
+      <span class="item-expiration">
+        {{#if isExpired}}
         expired!
         {{else}}
-        expires {{expirationFromNow}}
+        expires {{expFromNow}}
         {{/if}}
       </span>
 

@@ -1,9 +1,8 @@
+{{#link-to 'fridges' classNames="button"}}&laquo; Back to Fridges{{/link-to}}
+
 <header class="global-header">
-  {{#link-to 'fridges' classNames="button"}}&laquo; Back to Fridges{{/link-to}}
+  <h1>{{#link-to 'fridge' this}}{{name}}{{/link-to}}</h1>
+  {{#link-to 'items.new' classNames="button"}}+ Add new item{{/link-to}}
 </header> <!-- /.global-header -->
-
-<h1>{{#link-to 'fridge' this}}{{name}}{{/link-to}}</h1>
-
-{{#link-to 'items.new' classNames="button"}}+ Add new item{{/link-to}}
 
 {{outlet}}
