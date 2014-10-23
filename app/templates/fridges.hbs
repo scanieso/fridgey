@@ -3,13 +3,14 @@
   {{#link-to 'fridges.new' classNames="button"}}+ Add New Fridge{{/link-to}}
 </header> <!-- /.global-header -->
 
-<ul>
+<ul class="fridges">
   {{#each itemController="fridge"}}
-  <li>
-    {{#link-to 'fridge' this}}{{name}}{{/link-to}}
-    {{expiring.length}} out of {{items.length}} expiring
-
-    <a href="#" {{action 'deleteFridge'}}>Delete</a>
+  <li class="fridge">
+    {{#link-to 'fridge' this}}{{name}}{{/link-to}} ({{items.length}})
+    is the fridge <span title="Healthy is defined as fewer than 50% of items thrown out.">healthy</span>? {{isHealthy}},
+    <strong>{{eaten.length}}</strong> eaten,
+    <strong>{{thrownOut.length}}</strong> thrown out
+    <a href="#" class="delete-link" {{action 'deleteFridge'}}>Delete</a>
   </li>
   {{/each}}
 </ul>

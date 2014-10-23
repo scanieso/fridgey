@@ -1,0 +1,25 @@
+.fridge-chart {
+  height: 200px;
+
+  svg {
+    height: 100%;
+    text-anchor: middle;
+    width: 100%;
+  }
+
+  .background {
+    fill: $gray-lighter;
+  }
+
+  .shadow {
+    fill: $color-neutral-darker;
+  }
+
+  .is-eaten {
+    fill: $gray-lightest;
+  }
+
+  .is-thrown-out {
+    fill: $gray-lighter;
+  }
+}

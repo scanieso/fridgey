@@ -5,9 +5,11 @@
 @charset "UTF-8";
 
 $em-base: 16;
+$fa-font-path: "fonts/";
 
 @import "./bower_components/bourbon/dist/bourbon";
 @import "./bower_components/normalize/normalize";
+@import "./bower_components/font-awesome/scss/font-awesome";
 
 @import "base/variables";
 @import "base/mixins";
@@ -18,8 +20,9 @@ $em-base: 16;
 @import "base/typography";
 
 @import "component/form/button";
-@import "component/form/input";
-@import "component/form/select";
+@import "component/form/input-checkbutton";
+@import "component/form/input-text";
+@import "component/form/input-select";
 @import "component/table";
 
 @import "layout/footer";
@@ -28,4 +31,6 @@ $em-base: 16;
 @import "layout/header";
 @import "layout/section";
 
+@import "component/fridge";
+@import "component/fridge-chart";
 @import "component/items";

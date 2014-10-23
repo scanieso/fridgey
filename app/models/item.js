@@ -11,6 +11,9 @@ export default DS.Model.extend({
   }),
   fridge: DS.belongsTo('fridge', { async: true }),
 
+  status: DS.attr('string'),
+  statusDate: DS.attr('date'),
+
   slug: function () {
     return this.get('name').dasherize();
   }.property('name'),
@@ -26,7 +29,21 @@ export default DS.Model.extend({
     return exp.diff(now, 'days');
   }.property('expMoment'),
 
+  expFromNow: function () {
+    return this.get('expMoment').endOf('day').fromNow();
+  }.property('expMoment'),
+
   isExpired: function () {
     return this.get('expDiff') < 0;
-  }.property('expDiff')
+  }.property('expDiff'),
+
+  prettyExp: function () {
+    return 'Expires ' + this.get('expMoment').format('MMMM Do, YYYY');
+  }.property('expMoment'),
+
+  statusClassName: function () {
+    if (this.get('status')) {
+      return 'is-' + this.get('status').dasherize();
+    }
+  }.property('status')
 });

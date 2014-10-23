@@ -1,0 +1,7 @@
+.fridges {
+  @include list-clean;
+}
+
+.fridge {
+  display: block;
+}

@@ -1,0 +1,33 @@
+.input-checkbutton {
+  background: rgba(#000, 0.1);
+  border-radius: 2px;
+  display: inline-block;
+  cursor: pointer;
+
+  label {
+    cursor: pointer;
+  }
+
+  input {
+    @include opacity(0);
+    cursor: pointer;
+    position: absolute;
+
+    &:checked {
+      + .input-checkbutton-label {
+        color: $color-primary;
+      }
+    }
+
+    &:focus {
+      + .input-checkbutton-label {
+        outline: thin dotted;
+      }
+    }
+  }
+}
+
+.input-checkbutton-label {
+  display: block;
+  padding: 10px 20px;
+}

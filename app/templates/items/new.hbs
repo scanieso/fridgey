@@ -1,13 +1,19 @@
-<h3>New Item:</h3>
+<div class="row">
+  <div class="span5">
+    <label>
+      <span class="is-hidden">Name:</span>
+      {{input class="input-text input-large" placeholder=placeholderText value=name autofocus=true}}
+    </label>
+  </div>
 
-<label>
-  Name:
-  {{input value=name}}
-</label>
+  <div class="span4">
+    <label>
+      <span class="is-hidden">Expiration Date:</span>
+      {{input class="input-text input-large" type="date" value=expiration}}
+    </label>
+  </div>
 
-<label>
-  Expiration Date:
-  {{input type="date" value=expiration}}
-</label>
-
-<button class="button" {{action 'addItem'}} {{bind-attr disabled=isInvalid}}>Save Item</button>
+  <div class="span3">
+    <button class="button button-large" {{action 'addItem'}} {{bind-attr disabled=isInvalid}}>Save Item</button>
+  </div>
+</div>

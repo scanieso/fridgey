@@ -1,48 +1,78 @@
-/* global moment */
-
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-  needs: ['fridge', 'items'],
+  needs: ['fridge'],
   actions: {
-    deleteItem: function () {
+    delete: function () {
       var fridge = this.get('controllers.fridge');
 
-      this.store.find('item', this.get('id')).then(function (item) {
-        item.destroyRecord();
+      var shouldDeleteItem = confirm('Are you sure? This cannot be undone.');
 
-        fridge.get('items').then(function (items) {
-          items.removeObject(item);
-          fridge.get('model').save();
+      if (shouldDeleteItem) {
+        this.store.find('item', this.get('id')).then(function (item) {
+          item.destroyRecord();
+
+          fridge.get('items').then(function (items) {
+            items.removeObject(item);
+            fridge.get('model').save();
+          });
         });
+      }
+    },
+
+    resetStatus: function () {
+      this.set('status', undefined);
+      this.set('statusDate', undefined);
+    },
+
+    toggleEditMode: function () {
+      this.set('isEditing', !this.get('isEditing'));
+    },
+
+    undo: function () {
+      this.get('model').rollback();
+      this.set('isEditing', false);
+    },
+
+    update: function () {
+      console.log('updating', this.get('name'));
+      var self = this;
+
+      if (this.get('resetStatus')) {
+        this.set('status', undefined);
+      }
+
+      this.store.find('item', this.get('id')).then(function (item) {
+        item.save();
+        self.set('isEditing', false);
+        self.set('resetStatus', false);
+      });
+    },
+
+    updateStatus: function () {
+      this.set('statusDate', new Date());
+      this.store.find('item', this.get('id')).then(function (item) {
+        item.save();
       });
     }
   },
 
-  expFromNow: function () {
-    return this.get('expMoment').endOf('day').fromNow();
-  }.property('expMoment'),
-
-  expScale: function () {
+  expClassName: function () {
     var diff = this.get('expDiff'),
     scale;
 
     if (diff < 0) {
-      scale = 'expired';
+      scale = 'is-expired';
     } else if (diff === 0) {
-      scale = 'expires-today';
+      scale = 'is-expiring-today';
     } else if (diff < 2) {
-      scale = 'expires-soon';
+      scale = 'is-expiring-soon';
     } else if (diff < 7) {
-      scale = 'expires-this-week';
+      scale = 'is-expiring-this-week';
     } else {
       scale = '';
     }
 
     return scale;
-  }.property('expDiff'),
-
-  prettyExp: function () {
-    return 'Expires ' + this.get('expMoment').format('MMMM Do, YYYY');
-  }.property('expMoment')
+  }.property('expDiff')
 });

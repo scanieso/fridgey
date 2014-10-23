@@ -3,10 +3,11 @@
   margin-left: (-$spacing-horizontal + 4);
 
   > li {
-    @include inline-block;
     @include transition(width 0.4s);
+    display: inline-block;
     margin-left: em(-4);
     padding-left: $spacing-horizontal;
+    position: relative;
     vertical-align: top;
     width: 25%;
   }
@@ -40,24 +41,113 @@
   position: relative;
   text-align: center;
 
-  &.expired {
+  &.is-expired {
     background: $color-neutral-dark;
     border-color: $color-neutral-darker;
+
+    .input-checkbutton,
+    .input-text {
+      background: $color-neutral-darker;
+      border-top-color: $color-neutral-darkest;
+    }
   }
 
-  &.expires-today {
+  &.is-expiring-today {
     background: $color-scale-4;
     border-color: $color-scale-4-dark;
+
+    .input-checkbutton,
+    .input-text {
+      background: $color-scale-4-dark;
+      border-top-color: $color-scale-4-darker;
+    }
   }
 
-  &.expires-soon {
+  &.is-expiring-soon {
     background: $color-scale-3;
     border-color: $color-scale-3-dark;
+
+    .input-checkbutton,
+    .input-text {
+      background: $color-scale-3-dark;
+      border-top-color: $color-scale-3-darker;
+    }
   }
 
-  &.expires-this-week {
+  &.is-expiring-this-week {
     background: $color-scale-2;
     border-color: $color-scale-2-dark;
+
+    .input-checkbutton,
+    .input-text {
+      background: $color-scale-2-dark;
+      border-top-color: $color-scale-2-darker;
+    }
+  }
+
+  &.is-eaten {
+    $size: 30px;
+
+    &:before { // bitemark
+      background: $color-neutral;
+      box-shadow:
+        ($size*0.4) (-$size*0.6) 0 0 $color-neutral,
+        (-$size*0.4) ($size*8/15) 0 0 $color-neutral,
+        (-$size*1/6) (-$size*1/6) 0 0 $color-neutral;
+      content: "";
+      border-radius: 20px;
+      display: block;
+      height: $size;
+      position: absolute;
+      left: -10px;
+      top: -3px;
+      width: $size;
+    }
+  }
+
+  &.is-thrown-out {
+  }
+
+  &.is-eaten,
+  &.is-thrown-out {
+    opacity: 0.2;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &.is-editing {
+    opacity: 1;
+  }
+
+  .input-checkbutton,
+  .input-text {
+    @include vertical-rhythm(5);
+    background: $color-scale-1-dark;
+    border-top-color: $color-scale-1-darker;
+  }
+
+  .button,
+  .input-text {
+    @include vertical-rhythm(5);
+  }
+}
+
+.item-helper {
+  @include font-size(18);
+  @include transition(opacity 0.3s);
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 5px;
+  top: 2px;
+
+  .item:hover &,
+  .item.is-editing & {
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 

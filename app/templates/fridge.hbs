@@ -1,8 +1,20 @@
 {{#link-to 'fridges' classNames="button"}}&laquo; Back to Fridges{{/link-to}}
 
-<header class="global-header">
-  <h1>{{#link-to 'fridge' this}}{{name}}{{/link-to}}</h1>
-  {{#link-to 'items.new' classNames="button"}}+ Add new item{{/link-to}}
+<header class="global-header row">
+  <div class="span4">
+    <h1>{{#link-to 'fridge' this}}{{name}}{{/link-to}}</h1>
+  </div>
+
+  <div class="span4">
+    {{view 'fridgeChart'}}
+  </div>
+
+  <div class="span4">
+    <p>
+      Items Eaten: {{eaten.length}} <br>
+      Thrown Out: {{thrownOut.length}}
+    </p>
+  </div>
 </header> <!-- /.global-header -->
 
 {{outlet}}

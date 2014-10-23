@@ -3,18 +3,65 @@
 <ul class="items-list">
   {{#each itemController="item"}}
   <li>
-    <div {{bind-attr class=":item expScale" title=prettyExp}}>
+    <div {{bind-attr class=":item expClassName isEditing statusClassName" title=prettyExp}}>
+
+      {{!-- Editing --}}
+      {{#if isEditing}}
+      <a href="#!" class="item-helper" {{action 'undo'}}>
+        <span class="fa fa-close"></span>
+      </a>
+
+      {{input class="input-text item-name" value=name}}
+
+      {{input class="input-text item-expiration" type="date" value=expiration}}
+
+      {{#if status}}
+      <label>
+        {{input type="checkbox" checked=resetStatus}}
+        Move to fridge
+      </label>
+      {{/if}}
+
+      <button class="button button-warning" {{action 'delete'}}>Delete</button>
+      <button class="button" {{action 'update'}}>Save</button>
+
+      {{!-- Default --}}
+      {{else}}
+      <a href="#!" class="item-helper" {{action 'toggleEditMode'}}>
+        <span class="fa fa-pencil"></span>
+      </a>
+
       <strong class="item-name">{{name}}</strong>
 
+      {{#if status}}
+      <span class="item-expiration">
+        {{status}}
+      </span>
+      {{else}}
       <span class="item-expiration">
         {{#if isExpired}}
-        expired!
+        expired
         {{else}}
         expires {{expFromNow}}
         {{/if}}
       </span>
 
-      <a class="delete-item-link" href="#" {{action 'deleteItem'}}>Delete</a>
+      {{#radio-button class="input-checkbutton" value="thrownOut" groupValue=status changed='updateStatus'}}
+      <span class="input-checkbutton-label" title="Throw Out">
+        <span class="is-hidden">Throw Out</span>
+        <span class="fa fa-trash"></span>
+      </span>
+      {{/radio-button}}
+
+      {{#radio-button class="input-checkbutton" value="eaten" groupValue=status changed='updateStatus'}}
+      <span class="input-checkbutton-label" title="Eat">
+        <span class="is-hidden">Eat</span>
+        <span class="fa fa-cutlery"></span>
+      </span>
+      {{/radio-button}}
+      {{/if}}
+
+      {{/if}} {{!-- end if --}}
     </div>
   </li>
   {{else}}

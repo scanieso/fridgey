@@ -8,8 +8,8 @@ button {
   @include box-sizing(border-box);
   @include transition(background 0.2s);
   background: $color-primary;
-  border: 1px solid $color-primary;
-  border-bottom: 2px solid $color-primary-dark;
+  border: 1px solid transparent;
+  border-bottom: 3px solid $color-primary-dark;
   border-radius: 2px;
   color: #fff;
   cursor: pointer;
@@ -17,7 +17,7 @@ button {
   font-family: inherit;
   font-weight: bold;
   margin: 0;
-  padding: 4px 10px;
+  padding: 5px 10px;
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
@@ -30,12 +30,22 @@ button {
   }
 
   &:active {
-    box-shadow: inset 0 2px 5px rgba(#000, 0.1);
   }
 
-  &[disabled] {
+  &[disabled],
+  &.disabled {
     @include opacity(0.3);
     background: $color-primary;
     cursor: default;
   }
+}
+
+.button-large {
+  @include font-size(18);
+  padding: 6px 15px;
+}
+
+.button-warning {
+  background: $color-warning;
+  border-bottom-color: $color-warning-dark;
 }

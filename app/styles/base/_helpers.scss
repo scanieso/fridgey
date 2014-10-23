@@ -17,3 +17,7 @@
 // .pull-right {
 //   float: right;
 // }
+
+.is-hidden {
+  @include hidden;
+}

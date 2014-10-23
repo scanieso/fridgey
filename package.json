@@ -31,6 +31,9 @@
     "glob": "^4.0.5",
     "emberfire": "~1.2.7",
     "ember-cli-moment": "0.0.1",
-    "ember-cli-sass": "~2.0.1"
+    "ember-cli-sass": "~2.0.1",
+    "broccoli-static-compiler": "~0.2.1",
+    "broccoli-merge-trees": "~0.2.1",
+    "ember-radio-button": "~0.1.0"
   }
 }

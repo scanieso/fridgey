@@ -2,14 +2,14 @@
 // ---------------------------------------
 
 // gray, pea, plum
-$color-neutral: #EBE3AA;
-$color-scale-1: darken(#CAD7B2, 5);
-$color-scale-2: #A8CABA;
-$color-scale-3: #838689;
-$color-scale-4: #5D4157;
+// $color-neutral: #EBE3AA;
+// $color-scale-1: darken(#CAD7B2, 5);
+// $color-scale-2: #A8CABA;
+// $color-scale-3: #838689;
+// $color-scale-4: #5D4157;
 
 // plum, orange, magenta
-$color-neutral: #331327;
+$color-neutral: lighten(#331327, 3);
 $color-scale-1: #991766;
 $color-scale-2: #D90F5A;
 $color-scale-3: #F34739;
@@ -22,24 +22,32 @@ $color-scale-4: #FF6E27;
 // $color-scale-3: #FFD6A3;
 // $color-scale-4: #FAAD8E;
 
-$color-neutral-lighter: lighten($color-neutral, 15);
-$color-neutral-light: lighten($color-neutral, 8);
-$color-neutral-dark: darken($color-neutral, 5);
-$color-neutral-darker: darken($color-neutral, 10);
+$color-neutral-lighter: lighten($color-neutral, 10);
+$color-neutral-light: lighten($color-neutral, 5);
+$color-neutral-dark: darken($color-neutral, 3);
+$color-neutral-darker: darken($color-neutral, 8);
+$color-neutral-darkest: darken($color-neutral, 20);
 
 $color-scale-1-light: lighten($color-scale-1, 10);
 $color-scale-1-dark: darken($color-scale-1, 10);
+$color-scale-1-darker: darken($color-scale-1, 20);
 
 $color-scale-2-light: lighten($color-scale-2, 10);
 $color-scale-2-dark: darken($color-scale-2, 10);
+$color-scale-2-darker: darken($color-scale-2, 20);
 
 $color-scale-3-light: lighten($color-scale-3, 10);
 $color-scale-3-dark: darken($color-scale-3, 10);
+$color-scale-3-darker: darken($color-scale-3, 20);
 
 $color-scale-4-light: lighten($color-scale-4, 10);
 $color-scale-4-dark: darken($color-scale-4, 10);
+$color-scale-4-darker: darken($color-scale-4, 20);
 
-$gray: #424254;
+$gray: #999;
+$gray-light: lighten($gray, 10);
+$gray-lighter: lighten($gray, 20);
+$gray-lightest: lighten($gray, 30);
 
 $color-body: #fff;
 $color-primary: lighten($color-scale-1, 20);
@@ -47,6 +55,9 @@ $color-primary: #046D8B;
 $color-primary: #309292;
 $color-primary: #8F9BEB;
 $color-primary-dark: darken($color-primary, 10);
+
+$color-warning: red;
+$color-warning-dark: darken($color-warning, 10);
 
 
 // Fonts

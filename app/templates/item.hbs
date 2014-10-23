@@ -1,0 +1,19 @@
+{{#link-to 'fridge' this.fridge classNames="button" disabled=isEditing}}&laquo; Back to {{this.fridge.name}}{{/link-to}}
+
+{{#if isEditing}}
+<h1>{{input value=name}}</h1>
+
+<ul>
+  <li>Expires {{input type="date" value=expiration}}</li>
+</ul>
+
+{{else}}
+
+<h1>{{name}}</h1>
+<button class="button" {{action 'toggleEdit'}}>Edit</button>
+
+<ul>
+  <li>Expires {{expFromNow}}</li>
+</ul>
+
+{{/if}}
