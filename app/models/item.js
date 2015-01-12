@@ -37,6 +37,10 @@ export default DS.Model.extend({
     return this.get('expDiff') < 0;
   }.property('expDiff'),
 
+  isInFridge: function () {
+    return typeof this.get('status') === 'undefined';
+  }.property('status'),
+
   prettyExp: function () {
     return 'Expires ' + this.get('expMoment').format('MMMM Do, YYYY');
   }.property('expMoment'),

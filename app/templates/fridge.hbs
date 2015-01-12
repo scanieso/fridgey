@@ -5,16 +5,19 @@
     <h1>{{#link-to 'fridge' this}}{{name}}{{/link-to}}</h1>
   </div>
 
+  {{#if outOfFridge.length}}
   <div class="span4">
     {{view 'fridgeChart'}}
   </div>
 
   <div class="span4">
     <p>
+      Grade: {{grade}} <br>
       Items Eaten: {{eaten.length}} <br>
       Thrown Out: {{thrownOut.length}}
     </p>
   </div>
+  {{/if}}
 </header> <!-- /.global-header -->
 
 {{outlet}}

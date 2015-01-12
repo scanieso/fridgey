@@ -1,8 +1,8 @@
 # Fridgey
 
-This README outlines the details of collaborating on this Ember application.
+Keeps track of when items in fridge expire to increase awareness of food habits and ultimately reduce food waste.
 
-Keeps track of when items in fridge expire.
+This README outlines the details of collaborating on this Ember application.
 
 ## Prerequisites
 

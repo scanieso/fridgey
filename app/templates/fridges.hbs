@@ -6,10 +6,10 @@
 <ul class="fridges">
   {{#each itemController="fridge"}}
   <li class="fridge">
-    {{#link-to 'fridge' this}}{{name}}{{/link-to}} ({{items.length}})
-    is the fridge <span title="Healthy is defined as fewer than 50% of items thrown out.">healthy</span>? {{isHealthy}},
-    <strong>{{eaten.length}}</strong> eaten,
-    <strong>{{thrownOut.length}}</strong> thrown out
+    {{#link-to 'fridge' this}}{{name}}{{/link-to}} ({{inFridge.length}})
+    {{#if grade}}
+    <span title="Grade is based on ratio of items eaten vs thrown out.">grade</span>: {{grade}},
+    {{/if}}
     <a href="#" class="delete-link" {{action 'deleteFridge'}}>Delete</a>
   </li>
   {{/each}}

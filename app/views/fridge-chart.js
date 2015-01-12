@@ -5,22 +5,32 @@ import Ember from 'ember';
 export default Ember.View.extend({
   classNames: ['fridge-chart'],
 
-  addWedges: function () {
-    var total = 0,
-    items;
+  items: Ember.computed.alias('controller.items'),
 
-    items = this.get('controller.items').filter(function (item) {
-      return item.get('status') !== undefined;
+  addWedges: function () {
+    var self = this,
+    total = 0,
+    groups = [],
+    items = this.get('items').filterBy('isInFridge', false);
+
+    groups.push({
+      label: 'Eaten',
+      items: items.filterBy('status', 'eaten')
     });
 
-    if (!items.length) {
+    groups.push({
+      label: 'Thrown Out',
+      items: items.filterBy('status', 'thrownOut')
+    });
+
+    if (!groups.length) {
       return false;
     }
 
     this.get('svg').selectAll('.slice').remove();
 
     var scale = d3.scale.linear()
-    .domain([0, items.length])
+    .domain([0, items.get('length')])
     .range([0, 2 * Math.PI]);
 
     var arc = d3.svg.arc()
@@ -29,29 +39,41 @@ export default Ember.View.extend({
     .startAngle(function () {
       return scale(total);
     })
-    .endAngle(function () {
-      total += 1;
+    .endAngle(function (d) {
+      total += d.items.length;
       return scale(total);
     });
 
     var slices = this.get('svg').selectAll('g')
-    .data(items.sortBy('status'))
+    .data(groups)
     .enter()
     .append('g')
     .attr('class', function (d) {
-      return d.get('statusClassName');
+      if (d.items.length) {
+        return d.items[0].get('statusClassName');
+      }
     })
     .classed('slice', true);
 
     slices.append('path')
     .attr('d', arc);
+
+    slices.append('svg:text')
+    .attr('transform', function (d) {
+      d.innerRadius = 0;
+      d.outerRadius = self.get('radius');
+      return 'translate(' + arc.centroid(d) + ')';
+    })
+    .text(function (d, i) {
+      return groups[i].label;
+    });
   }.observes('controller.items.@each.status'),
 
   didInsertElement: function () {
-    var height = 300,
+    var height = 200,
     shadow = {
-      x: 6,
-      y: 6
+      x: 4,
+      y: 4
     },
     canvas = {
       height: height + shadow.y,

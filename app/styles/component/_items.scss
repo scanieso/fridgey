@@ -91,9 +91,9 @@
     &:before { // bitemark
       background: $color-neutral;
       box-shadow:
-        ($size*0.4) (-$size*0.6) 0 0 $color-neutral,
-        (-$size*0.4) ($size*8/15) 0 0 $color-neutral,
-        (-$size*1/6) (-$size*1/6) 0 0 $color-neutral;
+      ($size*0.4) (-$size*0.6) 0 0 $color-neutral,
+      (-$size*0.4) ($size*8/15) 0 0 $color-neutral,
+      (-$size*1/6) (-$size*1/6) 0 0 $color-neutral;
       content: "";
       border-radius: 20px;
       display: block;
@@ -110,6 +110,8 @@
 
   &.is-eaten,
   &.is-thrown-out {
+    background: $color-neutral-dark;
+    border-color: $color-neutral-darker;
     opacity: 0.2;
   }
 
